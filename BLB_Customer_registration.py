@@ -1,6 +1,7 @@
 import unittest
 from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
+import json
 
 # class SimpleCalculatorTests(unittest.TestCase):
 
@@ -17,11 +18,19 @@ def blb():
             desired_capabilities= desired_caps)
     
         wait=driver.implicitly_wait(60) # seconds
+        f= open('fixtures/login.json')
+        data=json.load(f)
+        
+        username=data['username']
+        password=data['password']
+         
+         
+         
         el= driver.find_element_by_id("np.com.infodev.blb.local:id/ed_name_search")
-        el.send_keys("ramkarki")
+        el.send_keys(username)
         wait
         el=driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_password")
-        el.send_keys("sa@1234")   
+        el.send_keys(password)   
         driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_button").click()
         
         
