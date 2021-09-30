@@ -7,7 +7,6 @@ from appium.webdriver.common.touch_action import TouchAction
 def blb():
         #set up appium
         desired_caps = {}  
-        # desired_caps["app"] = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App"
         desired_caps["platformName"] = "Android"
         desired_caps["deviceName"] = "emulator-5554"
         desired_caps["appPackage"] = "np.com.infodev.blb.local"
@@ -159,33 +158,7 @@ def blb():
         driver.find_element_by_id("np.com.infodev.blb.local:id/ld_btn_no").click()
         wait
         
-        
-             
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                
-      
-        
-        
-        
-        
-        
-        
-        
-    
+           
 if __name__ == '__main__':
     blb()
     
