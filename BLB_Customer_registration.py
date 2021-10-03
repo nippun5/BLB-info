@@ -1,13 +1,13 @@
 import unittest
 from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
+import json
 
 # class SimpleCalculatorTests(unittest.TestCase):
 
 def blb():
         #set up appium
         desired_caps = {}  
-        # desired_caps["app"] = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App"
         desired_caps["platformName"] = "Android"
         desired_caps["deviceName"] = "emulator-5554"
         desired_caps["appPackage"] = "np.com.infodev.blb.local"
@@ -18,11 +18,20 @@ def blb():
             desired_capabilities= desired_caps)
     
         wait=driver.implicitly_wait(60) # seconds
+        f= open('fixtures/login.json')
+        g= open('fixtures/users.json')
+        login_data=json.load(f)
+        users=json.load(g)
+        
+        #username= login_data['username']
+        #password= login_data['password']
+              
+                
         el= driver.find_element_by_id("np.com.infodev.blb.local:id/ed_name_search")
-        el.send_keys("ramkarki")
+        el.send_keys(login_data['username'])
         wait
         el=driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_password")
-        el.send_keys("sa@1234")   
+        el.send_keys(login_data['password'])   
         driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_button").click()
         
         
@@ -42,7 +51,7 @@ def blb():
         driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ListView/android.widget.TextView[7]").click()
         wait
         el=driver.find_element_by_id("np.com.infodev.blb.local:id/frag_reg_pre_first_name")
-        el.send_keys("Nippun")
+        el.send_keys(users['first_name'])
         wait
         el=driver.find_element_by_id("np.com.infodev.blb.local:id/frag_reg_pre_last_name")
         el.send_keys("Shrestha")
@@ -159,33 +168,8 @@ def blb():
         driver.find_element_by_id("np.com.infodev.blb.local:id/ld_btn_no").click()
         wait
         
-        
-             
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                
-      
-        
-        
-        
-        
-        
-        
-        
-    
+        print("Test Completed")
+           
 if __name__ == '__main__':
     blb()
     
