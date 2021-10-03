@@ -1,10 +1,12 @@
 import json
  
 def el():
-    f= open('login.json')
+    f= open('fixtures/login.json')
+    g=open('fixtures/users.json')
     data=json.load(f)
+    datas=json.load(g)
     
-    for i in data['password']:
+    for i in datas['first_name']:
         print(i)
 
 el()
