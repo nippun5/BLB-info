@@ -165,37 +165,7 @@ def blb():
         #-------------------------confirm all-------------------
         driver.find_element_by_id("np.com.infodev.blb.local:id/ld_btn_no").click()
         wait
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                
-      
-        
-        
-        
-        
-        
-        
-        
-    
+            
 if __name__ == '__main__':
     blb()
     
