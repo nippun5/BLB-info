@@ -1,9 +1,14 @@
 
 {
-    "users": [{
+    
     "first_name": "Nippun",
     "last_name": "Shrestha",
-    "alert_mobile": "9843255972"}]
+    "alert_mobile": "9843255972",
+    "tole_name" :"baglung bazar",
+    "ward_no" : "29",
+    "block_no" : "2",
+    "street_name": "baglung street"
+    
 
 
 }
