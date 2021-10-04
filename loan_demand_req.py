@@ -17,17 +17,18 @@ def blb():
             command_executor='http://127.0.0.1:4723/wd/hub',
             desired_capabilities= desired_caps)
         
-        with open("login.json", "r") as read_file:
-            data=json.load(read_file)
-            json.dump(data)    
+        f=open("fixtures/login.json")
+        
+        login_data=json.load(f)
+         
             
         #---------------------------------------Login--------------------------
         wait=driver.implicitly_wait(60) # seconds
         el= driver.find_element_by_id("np.com.infodev.blb.local:id/ed_name_search")
-        el.send_keys("ramkarki")
+        el.send_keys(login_data['username'])
         wait
         el=driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_password")
-        el.send_keys("sa@1234")   
+        el.send_keys(login_data['password'])   
         driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_button").click()
         wait
 
