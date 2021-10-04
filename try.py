@@ -2,12 +2,15 @@ import json
  
 def el():
     f= open('fixtures/login.json')
-    g=open('fixtures/users.json')
-    data=json.load(f)
+    g=open('fixtures/loan_demand_data.json')
+    login_data=json.load(f)
     datas=json.load(g)
     
-    for i in datas['first_name']:
-        print(i)
+    print(datas['loan_period'])
+
+
+    # for i in datas['first_name']:
+    #     print(i)
 
 el()
     
