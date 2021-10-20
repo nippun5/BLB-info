@@ -21,6 +21,8 @@ def blb():
         
         wait=driver.implicitly_wait(60) # seconds
         f= open('fixtures/login.json')
+        g=open('/fixtures/loan_demand_data.json')
+        data=json.load(g)
         login_data=json.load(f)   
             
         #---------------------------------------Login--------------------------
