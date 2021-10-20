@@ -3,6 +3,8 @@ from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 import json
 
+from functions.login import login
+
 # class SimpleCalculatorTests(unittest.TestCase):
 
 def blb():
@@ -17,6 +19,7 @@ def blb():
             command_executor='http://127.0.0.1:4723/wd/hub',
             desired_capabilities= desired_caps)
         
+<<<<<<< HEAD
         f=open('fixtures/login.json')
         g=open('fixtures/loan_demand_data.json')
         login_data=json.load(f)
@@ -31,6 +34,23 @@ def blb():
         el.send_keys(login_data['password'])   
         driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_button").click()
         wait
+=======
+        wait=driver.implicitly_wait(60) # seconds
+        f= open('fixtures/login.json')
+        login_data=json.load(f)   
+            
+        #---------------------------------------Login--------------------------
+        # wait=driver.implicitly_wait(60) # seconds
+        # el= driver.find_element_by_id("np.com.infodev.blb.local:id/ed_name_search")
+        # el.send_keys(login_data['username'])
+        # wait
+        # el=driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_password")
+        # el.send_keys(login_data['password'])   
+        # driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_button").click()
+        # wait
+        
+        login(driver, login_data, wait)
+>>>>>>> eb270a1a2215d490c9fae1e36b28b557da257e6d
 
         #-----------------------------------Loan 
         
