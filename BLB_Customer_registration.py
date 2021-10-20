@@ -3,6 +3,8 @@ from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 import json
 
+from login import *
+
 # class SimpleCalculatorTests(unittest.TestCase):
 
 def blb():
@@ -27,12 +29,15 @@ def blb():
         #password= login_data['password']
               
                 
-        el= driver.find_element_by_id("np.com.infodev.blb.local:id/ed_name_search")
-        el.send_keys(login_data['username'])
-        wait
-        el=driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_password")
-        el.send_keys(login_data['password'])   
-        driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_button").click()
+        # el= driver.find_element_by_id("np.com.infodev.blb.local:id/ed_name_search")
+        # el.send_keys(login_data['username'])
+        # wait
+        # el=driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_password")
+        # el.send_keys(login_data['password'])   
+        # driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_button").click()
+        
+        #----------------------------------- Login function -------------------------
+        login(driver,login_data,wait)
         
         
         # wait
