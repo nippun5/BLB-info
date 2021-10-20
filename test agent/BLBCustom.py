@@ -1,9 +1,10 @@
-from appium.webdriver.webdriver import WebDriver
+# from appium.webdriver.webdriver import WebDriver
 from src.testproject.sdk.drivers import webdriver
 # import unittest
 # from appium import webdriver
-from appium.webdriver.common.touch_action import TouchAction
+# from appium.webdriver.common.touch_action import TouchAction
 import os
+import json
 # import time
 os.environ['TP_DEV_TOKEN'] = 'iffgYJB9HzXcVFPf-W-337nUAskjK4m7cc_tLwc3lfw1' 
 os.environ['TP_AGENT_URL']='http://127.0.0.1:8585'
@@ -22,14 +23,17 @@ def blb():
         driver = webdriver.Remote(desired_capabilities=desired_caps, project_name="BLB Project", job_name="Reporting Job")
             # command_executor='http://127.0.0.1:4723/wd/hub',
             # desired_capabilities= desired_caps)
-    
+        f=open('fixtures/login.json')
+        g=open('fixtures/users.json')
+        login_data=json.load(f)
+        users=json.load(g)
     
         wait=driver.implicitly_wait(60) # seconds
         el= driver.find_element_by_id("np.com.infodev.blb.local:id/ed_name_search")
-        el.send_keys("ramkarki")
+        el.send_keys(login_data['username'])
         wait
         el=driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_password")
-        el.send_keys("sa@1234")   
+        el.send_keys(login_data['password'])   
         driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_button").click()
         
         
@@ -49,17 +53,17 @@ def blb():
         driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ListView/android.widget.TextView[7]").click()
         wait
         el=driver.find_element_by_id("np.com.infodev.blb.local:id/frag_reg_pre_first_name")
-        el.send_keys("Nippun")
+        el.send_keys(users['first_name'])
         wait
         el=driver.find_element_by_id("np.com.infodev.blb.local:id/frag_reg_pre_last_name")
-        el.send_keys("Shrestha")
+        el.send_keys(users['last_name'])
         wait 
         
         # swipe(startX, startY, endX, endY, duration)
         driver.swipe(150, 900, 150, 150, 1000)
         
         el=driver.find_element_by_id("np.com.infodev.blb.local:id/frag_reg_pre_alert_mob_number")
-        el.send_keys("9843255977")
+        el.send_keys(users['alert_mobile'])
         wait
         driver.find_element_by_id("np.com.infodev.blb.local:id/btn_next").click()
         wait
@@ -118,16 +122,16 @@ def blb():
         driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ListView/android.widget.TextView[3]").click()
         wait
         
-        driver.find_element_by_id("np.com.infodev.blb.local:id/toleNameET").send_keys("bazar")
+        driver.find_element_by_id("np.com.infodev.blb.local:id/toleNameET").send_keys(users['tole_name'])
         wait
         
-        driver.find_element_by_id("np.com.infodev.blb.local:id/wardNumberET").send_keys("29")
+        driver.find_element_by_id("np.com.infodev.blb.local:id/wardNumberET").send_keys(users['ward_no'])
         wait
         
-        driver.find_element_by_id("np.com.infodev.blb.local:id/blockNumberET").send_keys("2")
+        driver.find_element_by_id("np.com.infodev.blb.local:id/blockNumberET").send_keys(users['block_no'])
         wait
         
-        driver.find_element_by_id("np.com.infodev.blb.local:id/streetNameET").send_keys("baglung khola")
+        driver.find_element_by_id("np.com.infodev.blb.local:id/streetNameET").send_keys(users['street_name'])
         wait
         
         #-----------------------save address------------
@@ -165,6 +169,8 @@ def blb():
         #-------------------------confirm all-------------------
         driver.find_element_by_id("np.com.infodev.blb.local:id/ld_btn_no").click()
         wait
+
+        print("Test Completed")
             
 if __name__ == '__main__':
     blb()

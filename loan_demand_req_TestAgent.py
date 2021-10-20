@@ -1,39 +1,41 @@
-import unittest
-from appium import webdriver
-from appium.webdriver.common.touch_action import TouchAction
-import json
 
-from functions.login import login
+from src.testproject.sdk.drivers import webdriver
+# import unittest
+# from appium import webdriver
+from appium.webdriver.common.touch_action import TouchAction
+import os
+import json
+os.environ['TP_DEV_TOKEN'] = 'iffgYJB9HzXcVFPf-W-337nUAskjK4m7cc_tLwc3lfw1' 
+os.environ['TP_AGENT_URL']='http://127.0.0.1:8585'
 
 # class SimpleCalculatorTests(unittest.TestCase):
 
 def blb():
         #set up appium
         desired_caps = {}  
+        # desired_caps["app"] = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App"
         desired_caps["platformName"] = "Android"
         desired_caps["deviceName"] = "emulator-5554"
         desired_caps["appPackage"] = "np.com.infodev.blb.local"
         desired_caps["appActivity"] = "np.com.infodev.blb.ui.welcome.mvp.WelcomeActivity"
-        desired_caps["noReset"] = "true"
-        driver = webdriver.Remote(
-            command_executor='http://127.0.0.1:4723/wd/hub',
-            desired_capabilities= desired_caps)
-        
-        wait=driver.implicitly_wait(60) # seconds
-        f= open('fixtures/login.json')
-        login_data=json.load(f)   
+        desired_caps["noReset"] = "false"
+        driver = webdriver.Remote(desired_capabilities=desired_caps, project_name="BLB Project", job_name="Reporting Job")
+            # command_executor='http://127.0.0.1:4723/wd/hub',
+            # desired_capabilities= desired_caps)
+        f=open('fixtures/login.json')
+        g=open('fixtures/loan_demand_data.json')
+        login_data=json.load(f)
+        data=json.load(g)
             
         #---------------------------------------Login--------------------------
-        # wait=driver.implicitly_wait(60) # seconds
-        # el= driver.find_element_by_id("np.com.infodev.blb.local:id/ed_name_search")
-        # el.send_keys(login_data['username'])
-        # wait
-        # el=driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_password")
-        # el.send_keys(login_data['password'])   
-        # driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_button").click()
-        # wait
-        
-        login(driver, login_data, wait)
+        wait=driver.implicitly_wait(60) # seconds
+        el= driver.find_element_by_id("np.com.infodev.blb.local:id/ed_name_search")
+        el.send_keys(login_data['username'])
+        wait
+        el=driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_password")
+        el.send_keys(login_data['password'])   
+        driver.find_element_by_id("np.com.infodev.blb.local:id/activity_login_button").click()
+        wait
 
         #-----------------------------------Loan 
         
@@ -82,14 +84,16 @@ def blb():
         wait
         
          # swipe(startX, startY, endX, endY, duration)
-        driver.swipe(150, 900, 150, 150, 1000)
-        wait
+        # driver.swipe(150, 900, 150, 150, 1000)
+        TouchAction(driver)   .press(x=642, y=1613)   .move_to(x=655, y=721)   .release()   .perform()
+
+        # wait
         
         #-----------------------------Add insurance
         driver.find_element_by_id("np.com.infodev.blb.local:id/fragment_loan_information_next_btn").click()
         wait
         
-        driver.swipe(150, 950, 150, 150, 1000)
+        # driver.swipe(150, 950, 150, 150, 1000)
         TouchAction(driver)   .press(x=642, y=1613)   .move_to(x=655, y=721)   .release()   .perform()
         wait
         driver.find_element_by_id("np.com.infodev.blb.local:id/go_to_attachment_btn").click()
