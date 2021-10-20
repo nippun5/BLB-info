@@ -1,11 +1,10 @@
-from appium.webdriver.webdriver import WebDriver
+
 from src.testproject.sdk.drivers import webdriver
 # import unittest
 # from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 import os
 import json
-# import time
 os.environ['TP_DEV_TOKEN'] = 'iffgYJB9HzXcVFPf-W-337nUAskjK4m7cc_tLwc3lfw1' 
 os.environ['TP_AGENT_URL']='http://127.0.0.1:8585'
 
@@ -24,7 +23,7 @@ def blb():
             # command_executor='http://127.0.0.1:4723/wd/hub',
             # desired_capabilities= desired_caps)
         f=open('fixtures/login.json')
-        g=open('fixtures/users.json')
+        g=open('fixtures/loan_demand_data.json')
         login_data=json.load(f)
         data=json.load(g)
             
@@ -85,14 +84,16 @@ def blb():
         wait
         
          # swipe(startX, startY, endX, endY, duration)
-        driver.swipe(150, 900, 150, 150, 1000)
-        wait
+        # driver.swipe(150, 900, 150, 150, 1000)
+        TouchAction(driver)   .press(x=642, y=1613)   .move_to(x=655, y=721)   .release()   .perform()
+
+        # wait
         
         #-----------------------------Add insurance
         driver.find_element_by_id("np.com.infodev.blb.local:id/fragment_loan_information_next_btn").click()
         wait
         
-        driver.swipe(150, 950, 150, 150, 1000)
+        # driver.swipe(150, 950, 150, 150, 1000)
         TouchAction(driver)   .press(x=642, y=1613)   .move_to(x=655, y=721)   .release()   .perform()
         wait
         driver.find_element_by_id("np.com.infodev.blb.local:id/go_to_attachment_btn").click()

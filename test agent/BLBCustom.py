@@ -1,8 +1,8 @@
-from appium.webdriver.webdriver import WebDriver
+# from appium.webdriver.webdriver import WebDriver
 from src.testproject.sdk.drivers import webdriver
 # import unittest
 # from appium import webdriver
-from appium.webdriver.common.touch_action import TouchAction
+# from appium.webdriver.common.touch_action import TouchAction
 import os
 import json
 # import time
@@ -128,7 +128,7 @@ def blb():
         driver.find_element_by_id("np.com.infodev.blb.local:id/wardNumberET").send_keys(users['ward_no'])
         wait
         
-        driver.find_element_by_id("np.com.infodev.blb.local:id/blockNumberET").send_keys(users['block_name'])
+        driver.find_element_by_id("np.com.infodev.blb.local:id/blockNumberET").send_keys(users['block_no'])
         wait
         
         driver.find_element_by_id("np.com.infodev.blb.local:id/streetNameET").send_keys(users['street_name'])
@@ -169,6 +169,8 @@ def blb():
         #-------------------------confirm all-------------------
         driver.find_element_by_id("np.com.infodev.blb.local:id/ld_btn_no").click()
         wait
+
+        print("Test Completed")
             
 if __name__ == '__main__':
     blb()
