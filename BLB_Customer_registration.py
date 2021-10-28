@@ -144,6 +144,48 @@ def blb():
         
         driver.find_element_by_id("np.com.infodev.blb.local:id/btn_next").click()
         wait
+        driver.find_element_by_id("np.com.infodev.blb.local:id/btn_add_identity").click()
+        wait
+        
+        driver.find_element_by_id("np.com.infodev.blb.local:id/issueOfficeAuthorityTypeET").click()
+        wait
+        
+        
+        driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ListView/android.widget.TextView[4]").click()
+        wait
+        
+        driver.find_element_by_id("np.com.infodev.blb.local:id/issueAuthorithNameET").send_keys("govt")
+        wait
+        
+        driver.find_element_by_id("np.com.infodev.blb.local:id/issueDateET").click()
+        wait
+        
+        driver.find_element_by_id("np.com.infodev.blb.local:id/btn_nepaliDatePicker_submit").click()
+        wait
+        
+        driver.find_element_by_id("np.com.infodev.blb.local:id/expiryDateET").click()
+        wait
+        
+        driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.support.v7.widget.LinearLayoutCompat/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Spinner[3]/android.widget.TextView").click()
+        wait
+        
+        driver.find_element_by_xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[3]").click()
+        wait
+        
+        
+        #----------------------------identity exp date submit-------------
+        driver.find_element_by_xpath("np.com.infodev.blb.local:id/btn_nepaliDatePicker_submit").click()
+        
+        driver.find_element_by_id("np.com.infodev.blb.local:id/identityNumberET").send_keys("1")
+        wait
+        
+        driver.find_element_by_id("np.com.infodev.blb.local:id/uploadImageLL").click()
+        wait
+        
+        
+        driver.find_element_by_id("com.android.documentsui:id/icon_thumb").click()
+                               
+        
         #----------------------save identity-----------
         driver.find_element_by_id("np.com.infodev.blb.local:id/btn_next").click()
         wait
